@@ -60,7 +60,7 @@ func IsMetric20(metric_in string) bool {
 // the weirdest things with all kinds of special characters.
 func ValidateSensibleChars(metric_id string) error {
 	for _, ch := range metric_id {
-		if !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9') && ch != '_' && ch != '-' && ch != '.' {
+		if !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9') && ch != '_' && ch != '-' && ch != '.' && ch != '@' {
 			return fmt.Errorf("metric '%s' contains illegal char '%s'", metric_id, string(ch))
 		}
 	}
@@ -70,7 +70,7 @@ func ValidateSensibleChars(metric_id string) error {
 // ValidateSensibleCharsB is like ValidateSensibleChars but for byte array inputs.
 func ValidateSensibleCharsB(metric_id []byte) error {
 	for _, ch := range metric_id {
-		if !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9') && ch != '_' && ch != '-' && ch != '.' {
+		if !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z') && !(ch >= '0' && ch <= '9') && ch != '_' && ch != '-' && ch != '.' && ch != '@' {
 			return fmt.Errorf("metric '%s' contains illegal char '%s'", string(metric_id), string(ch))
 		}
 	}
